@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+<title>Reduce, Reuse, CampusSupplies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: single readable column, a listing-tag hero, then plain sections that read like a product brief */
+:root {
+  --bg: #f5f7f6;
+  --surface: #ffffff;
+  --fg: #17211f;
+  --muted: #56645f;
+  --line: #d9e1de;
+  --accent: #1f6b5c;
+  --accent-ink: #ffffff;
+  --tag: #ffd84d;
+  --tag-ink: #2a2304;
+  --display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101715; --surface: #17211e; --fg: #e8efec; --muted: #9fb0aa;
+    --line: #2a3733; --accent: #5cc4ad; --accent-ink: #0b1513;
+    --tag: #f2cc3d; --tag-ink: #241d02; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101715; --surface: #17211e; --fg: #e8efec; --muted: #9fb0aa;
+  --line: #2a3733; --accent: #5cc4ad; --accent-ink: #0b1513;
+  --tag: #f2cc3d; --tag-ink: #241d02; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 1.0625rem; line-height: 1.6; }
+.wrap { max-width: 46rem; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 3rem 4rem; display: flex; flex-direction: column; gap: 3rem; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+h1 { font-size: clamp(2.6rem, 8vw, 4.2rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 1.6rem; font-weight: 700; }
+h3 { font-size: 1.1rem; font-weight: 700; }
+p { margin: 0; }
+.label { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+header { display: flex; flex-direction: column; gap: 1.25rem; }
+.tagline { font-size: 1.3rem; color: var(--muted); max-width: 34rem; }
+.byline { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.byline div { display: flex; flex-direction: column; gap: 0.15rem; }
+.byline strong { font-weight: 600; font-size: 1.05rem; }
+
+.listing { display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.25rem; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem; }
+.price { background: var(--tag); color: var(--tag-ink); font-family: var(--display); font-weight: 800; font-size: 1.6rem; padding: 0.6rem 1rem; border-radius: 6px; transform: rotate(-3deg); }
+.listing-body { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.listing-body .meta { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+
+section { display: flex; flex-direction: column; gap: 1rem; }
+section > p { max-width: 65ch; }
+.steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; counter-reset: step; }
+.steps li { display: grid; grid-template-columns: 2.25rem 1fr; gap: 1rem; counter-increment: step; }
+.steps li::before { content: counter(step); font-family: var(--display); font-weight: 800; font-size: 1.1rem; background: var(--accent); color: var(--accent-ink); width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center; }
+.steps li div { min-width: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem 2rem; }
+.grid div { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+.muted { color: var(--muted); }
+footer { font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 1.25rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="label">Product description</span>
+    <h1>Reduce, Reuse, CampusSupplies</h1>
+    <p class="tagline">A campus marketplace where college students buy and sell furniture and decor from their apartments, houses and dorms.</p>
+    <div class="byline">
+      <div><span class="label">Submitted by</span><strong>Devon</strong></div>
+      <div><span class="label">Course</span><strong>ENGR 310</strong></div>
+      <div><span class="label">Date</span><strong>November 10, 2026</strong></div>
+    </div>
+  </header>
+
+  <div class="listing" aria-label="Example listing">
+    <div class="price">$45</div>
+    <div class="listing-body">
+      <h3>Grey 3-seat couch, lightly used</h3>
+      <span class="meta">Pickup 0.4 mi from campus · Available May 8–12 · Verified student</span>
+    </div>
+  </div>
+
+  <section>
+    <h2>The problem</h2>
+    <p>Every spring, students moving out of their college homes need to get rid of couches, desks, lamps, rugs and wall decor fast. Much of it ends up on the curb or in a dumpster. At the same time, incoming students and people signing new leases are paying full retail for the same items a few blocks away. Facebook Marketplace and group chats are cluttered, aren't limited to students, and make it hard to trust who you're meeting.</p>
+  </section>
+
+  <section>
+    <h2>The solution</h2>
+    <p>Reduce, Reuse, CampusSupplies is a website built only for students at your school. You sign up with a .edu email, so every buyer and seller is a verified student. Listings are organized around the realities of college living: move-out dates, pickup distance from campus, and what fits in a dorm room or a shared apartment.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><div><h3>Verify</h3><p class="muted">Create an account with your school email.</p></div></li>
+      <li><div><h3>List or browse</h3><p class="muted">Post an item with photos, price and the dates it's available, or search by category, price and distance.</p></div></li>
+      <li><div><h3>Message and meet</h3><p class="muted">Chat in the app and agree on a pickup time and place.</p></div></li>
+      <li><div><h3>Hand off</h3><p class="muted">Pay through the site or in person and mark the item as sold.</p></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Key features</h2>
+    <div class="grid">
+      <div><h3>Student-only access</h3><p class="muted">.edu verification keeps the marketplace local and trusted.</p></div>
+      <div><h3>Move-out calendar</h3><p class="muted">Sellers set a "must be gone by" date so buyers can plan around leases.</p></div>
+      <div><h3>Distance filters</h3><p class="muted">See how far each item is from campus or your own address.</p></div>
+      <div><h3>Room bundles</h3><p class="muted">Sell a whole room at once: bed frame, desk, lamp and rug together.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who it's for</h2>
+    <div class="grid">
+      <div><h3>Sellers</h3><p class="muted">Graduating seniors and students moving out who want quick cash and an easy way to clear out.</p></div>
+      <div><h3>Buyers</h3><p class="muted">Freshmen, transfer students and anyone furnishing a new place on a student budget.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it makes money</h2>
+    <p>Listing is free. Reduce, Reuse, CampusSupplies takes a small fee (about 5%) on payments made through the site and charges a few dollars to feature a listing at the top of search during busy move-in and move-out weeks. Later, it can partner with local movers and storage companies for referral fees.</p>
+  </section>
+
+  <section>
+    <h2>Why it matters</h2>
+    <p>Reduce, Reuse, CampusSupplies saves students money, makes moving less stressful and keeps usable furniture out of landfills. Because demand peaks at predictable times each year (move-out in May, move-in in August), the site can focus its marketing on a few weeks and grow one campus at a time.</p>
+  </section>
+
+  <footer>Reduce, Reuse, CampusSupplies · Product description for ENGR 310 · Devon</footer>
+</div>
+</body>
+</html>
